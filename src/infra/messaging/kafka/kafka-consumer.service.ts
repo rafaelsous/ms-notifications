@@ -10,13 +10,11 @@ export class KafkaConsumerService
     super({
       client: {
         clientId: 'notifications',
-        brokers: ['polished-newt-9470-us1-kafka.upstash.io:9092'],
+        brokers: [`${process.env.KAFKA_BROKERS}`],
         sasl: {
           mechanism: 'scram-sha-256',
-          username:
-            'cG9saXNoZWQtbmV3dC05NDcwJGlyZCQDwnlKSDnN95nrsw7XlpwEl0Yh0FIdun0',
-          password:
-            'e-oZPl6i0diSoafNMC3KYhQKNMkICMU23qfUUJ_zOvGicni9AMQTv6FGVH0CDMYV3i_1lg==',
+          username: process.env.KAFKA_USERNAME as string,
+          password: process.env.KAFKA_PASSWORD as string,
         },
         ssl: true,
       },
